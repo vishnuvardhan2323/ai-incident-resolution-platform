@@ -1,0 +1,52 @@
+# Secrets
+.env
+.env.*
+!.env.example
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Testing / coverage
+.pytest_cache/
+.coverage
+htmlcov/
+
+# IDE
+.idea/
+.vscode/
+
+# Logs
+logs/
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Generated vector database
+data/chroma_db/
+data/chroma_db_backup/
+data/service_state.json
+
+# Temporary/debug files
+project_tree.txt
+
+# Build/package artifacts
+build/
+dist/
+*.egg-info/
+
+# Local development artifacts
+*.db
+*.sqlite
+*.sqlite3
+
+# Temporary/debug tests
+tests/debug/

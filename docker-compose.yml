@@ -1,0 +1,44 @@
+services:
+
+  backend:
+    image: ai-incident-resolution:latest
+    container_name: ai-incident-backend
+
+    env_file:
+      - .env
+
+    ports:
+      - "8000:8000"
+
+    volumes:
+      - ./data:/app/data
+      - ./logs:/app/logs
+
+    command:
+      - uvicorn
+      - src.backend_src.main:app
+      - --host
+      - "0.0.0.0"
+      - --port
+      - "8000"
+
+
+  frontend:
+    image: ai-incident-resolution:latest
+    container_name: ai-incident-frontend
+
+    environment:
+      BACKEND_URL: http://backend:8000
+
+    ports:
+      - "8501:8501"
+
+    depends_on:
+      - backend
+
+    command:
+      - streamlit
+      - run
+      - src/frontend_src/app.py
+      - --server.address=0.0.0.0
+      - --server.port=8501
